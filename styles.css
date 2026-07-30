@@ -497,8 +497,67 @@ button.link-arrow {
   flex-wrap: wrap;
   gap: clamp(1rem, 0.5rem + 2.5vw, 3rem) clamp(1.5rem, 0.5rem + 3vw, 3.5rem);
   font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.5rem);
+  align-items: flex-end;
 }
 .contact-list .link-arrow { font-size: inherit; }
+
+.contact-email {
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+  max-width: 100%;
+}
+.contact-email-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 400;
+  letter-spacing: var(--ls-mono);
+  line-height: var(--lh-mono);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.contact-email-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.65rem 1.25rem;
+  min-width: 0;
+}
+.contact-email-link {
+  min-width: 0;
+  max-width: 100%;
+}
+.contact-email-address {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.mail-copy {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0.15rem 0;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 400;
+  letter-spacing: var(--ls-mono);
+  line-height: var(--lh-mono);
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  cursor: pointer;
+  flex: 0 0 auto;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.mail-copy:hover,
+.mail-copy:focus-visible {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+.mail-copy.is-copied {
+  color: var(--ink);
+  border-bottom-color: transparent;
+}
 
 /* ============================================================
    FOOTER
@@ -695,10 +754,23 @@ button.link-arrow {
     align-items: flex-start;
     gap: 0.85rem;
   }
+  .contact-email {
+    width: 100%;
+  }
+  .contact-email-row {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+  }
   .contact-list .link-arrow,
   .hero-links .link-arrow,
   .sidebar-cta .link-arrow {
     min-height: 44px;
+  }
+  .mail-copy {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 
   .focus-list li {
