@@ -1,5 +1,5 @@
 /* ============================================================
-   Olaia Irigoien — temporary portfolio
+   Olaia Irigoyen — temporary portfolio
    Minimal vanilla JS: visitor location + local clock, scroll reveal, subtle hero tilt.
    All effects respect prefers-reduced-motion and touch devices.
    ============================================================ */
