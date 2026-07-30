@@ -138,38 +138,29 @@
     });
   }
 
-  /* ---------- Copy email ----------
-     Hero: tooltip button (.copy-mail)
-     Contact: secondary "Copy" control (.mail-copy) with mailto fallback */
-  const EMAIL = "olaiairigoien@gmail.com";
+  /* ---------- Copy email (no mailto) ----------
+     Hover tip: "Copy mail" → click → "Copied" */
   const copyBtns = Array.from(document.querySelectorAll(".copy-mail"));
-  const mailCopyBtns = Array.from(document.querySelectorAll(".mail-copy"));
   let copyResetTimer = null;
-  let mailCopyResetTimer = null;
-
-  async function writeClipboard(email) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      await navigator.clipboard.writeText(email);
-      return;
-    }
-    const ta = document.createElement("textarea");
-    ta.value = email;
-    ta.setAttribute("readonly", "");
-    ta.style.position = "absolute";
-    ta.style.left = "-9999px";
-    document.body.appendChild(ta);
-    ta.select();
-    const ok = document.execCommand("copy");
-    document.body.removeChild(ta);
-    if (!ok) throw new Error("copy failed");
-  }
 
   async function copyEmail(btn) {
-    const email = btn.getAttribute("data-email") || EMAIL;
+    const email = btn.getAttribute("data-email") || "";
     if (!email) return;
 
     try {
-      await writeClipboard(email);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(email);
+      } else {
+        const ta = document.createElement("textarea");
+        ta.value = email;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "absolute";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+      }
     } catch (err) {
       return;
     }
@@ -193,39 +184,7 @@
     }, 1800);
   }
 
-  async function copyMailSecondary(btn) {
-    const email = btn.getAttribute("data-email") || EMAIL;
-    if (!email) return;
-
-    try {
-      await writeClipboard(email);
-    } catch (err) {
-      window.location.href = "mailto:" + email;
-      return;
-    }
-
-    mailCopyBtns.forEach((b) => {
-      b.classList.remove("is-copied");
-      b.textContent = "Copy";
-      b.setAttribute("aria-label", "Copy email address");
-    });
-
-    btn.classList.add("is-copied");
-    btn.textContent = "Copied ✓";
-    btn.setAttribute("aria-label", "Email copied: " + email);
-
-    if (mailCopyResetTimer) clearTimeout(mailCopyResetTimer);
-    mailCopyResetTimer = setTimeout(() => {
-      btn.classList.remove("is-copied");
-      btn.textContent = "Copy";
-      btn.setAttribute("aria-label", "Copy email address");
-    }, 2000);
-  }
-
   copyBtns.forEach((btn) => {
     btn.addEventListener("click", () => copyEmail(btn));
-  });
-  mailCopyBtns.forEach((btn) => {
-    btn.addEventListener("click", () => copyMailSecondary(btn));
   });
 })();
