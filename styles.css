@@ -56,6 +56,17 @@ body {
 
 img, svg { max-width: 100%; height: auto; display: block; }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .muted { color: var(--ink-soft); }
 
 .visually-hidden {
@@ -266,6 +277,8 @@ img, svg { max-width: 100%; height: auto; display: block; }
   gap: 0.4em;
   width: fit-content;
   font-size: 1.02rem;
+  color: inherit;
+  text-decoration: none;
   padding-bottom: 3px;
   background-image: linear-gradient(currentColor, currentColor);
   background-repeat: no-repeat;
