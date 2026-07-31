@@ -374,10 +374,12 @@ dl, dt, dd {
 
 @media (max-width: 720px) {
   .soon-note-tip {
-    top: calc(100% + 0.45rem);
-    left: 0;
-    max-width: min(14rem, 72vw);
-    transform: translateY(-0.2rem);
+    top: auto;
+    bottom: calc(100% + 0.4rem);
+    left: auto;
+    right: 0;
+    max-width: min(14rem, 78vw);
+    transform: translateY(0.25rem);
   }
   .soon-note:hover .soon-note-tip,
   .soon-note:focus-visible .soon-note-tip,
