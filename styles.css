@@ -285,10 +285,10 @@ dl, dt, dd {
 .soon-note-mark {
   position: relative;
   display: block;
-  width: 0.55em;
-  height: 0.52em;
-  min-width: 34px;
-  min-height: 32px;
+  width: 0.68em;
+  height: 0.64em;
+  min-width: 40px;
+  min-height: 38px;
 }
 .soon-boil-frame {
   position: absolute;
