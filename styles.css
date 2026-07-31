@@ -286,12 +286,24 @@ dl, dt, dd {
   height: auto;
   min-width: 28px;
   min-height: 26px;
-  transition: transform 0.28s ease;
+  transform-origin: 50% 50%;
+  animation: soon-spin 8s linear infinite;
 }
 .soon-note:hover .soon-note-mark,
 .soon-note:focus-visible .soon-note-mark,
 .soon-note.is-open .soon-note-mark {
-  transform: rotate(-8deg) scale(1.05);
+  animation-duration: 3.5s;
+}
+
+@keyframes soon-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .soon-note-mark {
+    animation: none;
+  }
 }
 .soon-note-tip {
   position: absolute;
