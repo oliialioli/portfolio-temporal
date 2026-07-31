@@ -540,6 +540,16 @@ button.link-arrow {
   color: var(--ink-soft);
   margin: 0;
 }
+.footer-credit {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 400;
+  letter-spacing: var(--ls-mono);
+  line-height: var(--lh-mono);
+  color: var(--ink-soft);
+  opacity: 0.75;
+}
 
 /* ============================================================
    ENTRANCE ANIMATION
