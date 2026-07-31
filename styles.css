@@ -283,33 +283,62 @@ dl, dt, dd {
   transform: translateY(-0.12em);
 }
 .soon-note-mark {
+  position: relative;
   display: block;
   width: 0.55em;
-  height: auto;
+  height: 0.52em;
   min-width: 34px;
   min-height: 32px;
-  transform-origin: 50% 50%;
-  animation: soon-boil 1.35s ease-in-out infinite;
 }
-.soon-note:hover .soon-note-mark,
-.soon-note:focus-visible .soon-note-mark,
-.soon-note.is-open .soon-note-mark {
-  animation-duration: 0.85s;
+.soon-boil-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  animation-duration: 2.55s;
+  animation-timing-function: steps(1, end);
+  animation-iteration-count: infinite;
+}
+.soon-boil-frame--a { animation-name: soon-boil-a; }
+.soon-boil-frame--b { animation-name: soon-boil-b; }
+.soon-boil-frame--c { animation-name: soon-boil-c; }
+
+@keyframes soon-boil-a {
+  0%,
+  33.32% { opacity: 1; }
+  33.33%,
+  100% { opacity: 0; }
+}
+@keyframes soon-boil-b {
+  0%,
+  33.32% { opacity: 0; }
+  33.33%,
+  66.65% { opacity: 1; }
+  66.66%,
+  100% { opacity: 0; }
+}
+@keyframes soon-boil-c {
+  0%,
+  66.65% { opacity: 0; }
+  66.66%,
+  100% { opacity: 1; }
 }
 
-@keyframes soon-boil {
-  0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
-  18%  { transform: translate(0.04em, -0.05em) rotate(-7deg) scale(1.06); }
-  36%  { transform: translate(-0.03em, 0.03em) rotate(5deg) scale(0.96); }
-  54%  { transform: translate(0.03em, -0.04em) rotate(-4deg) scale(1.08); }
-  72%  { transform: translate(-0.04em, 0.02em) rotate(8deg) scale(0.97); }
-  88%  { transform: translate(0.02em, -0.03em) rotate(-3deg) scale(1.04); }
-  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+.soon-note:hover .soon-boil-frame,
+.soon-note:focus-visible .soon-boil-frame,
+.soon-note.is-open .soon-boil-frame {
+  animation-duration: 2s;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .soon-note-mark {
+  .soon-boil-frame {
     animation: none;
+    opacity: 0;
+  }
+  .soon-boil-frame--a {
+    opacity: 1;
   }
 }
 .soon-note-tip {
