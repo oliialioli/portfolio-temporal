@@ -289,17 +289,22 @@ dl, dt, dd {
   min-width: 34px;
   min-height: 32px;
   transform-origin: 50% 50%;
-  animation: soon-spin 8s linear infinite;
+  animation: soon-boil 1.35s ease-in-out infinite;
 }
 .soon-note:hover .soon-note-mark,
 .soon-note:focus-visible .soon-note-mark,
 .soon-note.is-open .soon-note-mark {
-  animation-duration: 3.5s;
+  animation-duration: 0.85s;
 }
 
-@keyframes soon-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes soon-boil {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+  18%  { transform: translate(0.04em, -0.05em) rotate(-7deg) scale(1.06); }
+  36%  { transform: translate(-0.03em, 0.03em) rotate(5deg) scale(0.96); }
+  54%  { transform: translate(0.03em, -0.04em) rotate(-4deg) scale(1.08); }
+  72%  { transform: translate(-0.04em, 0.02em) rotate(8deg) scale(0.97); }
+  88%  { transform: translate(0.02em, -0.03em) rotate(-3deg) scale(1.04); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
