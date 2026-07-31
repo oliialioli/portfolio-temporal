@@ -38,7 +38,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -112,7 +112,21 @@
 
         <h1 id="hero-title" class="hero-title" data-tilt>
           <span class="reveal" data-reveal style="--d:1">Portfolio</span>
-          <span class="reveal" data-reveal style="--d:2">coming soon.</span>
+          <span class="reveal hero-title-line" data-reveal style="--d:2">
+            coming soon.
+            <button
+              type="button"
+              class="soon-note"
+              aria-describedby="soon-tip"
+              aria-expanded="false"
+            >
+              <span class="soon-note-mark" aria-hidden="true">*</span>
+              <span class="visually-hidden">Why the portfolio is still coming soon</span>
+              <span id="soon-tip" class="soon-note-tip" role="tooltip">
+                Client work first. Portfolio second. Apparently.
+              </span>
+            </button>
+          </span>
         </h1>
 
         <p class="hero-statement reveal" data-reveal style="--d:3">

@@ -138,6 +138,31 @@
     });
   }
 
+  /* ---------- Soon asterisk note (hover + tap) ---------- */
+  const soonNote = document.querySelector(".soon-note");
+  if (soonNote) {
+    soonNote.addEventListener("click", (e) => {
+      if (!isTouch && window.matchMedia("(hover: hover)").matches) return;
+      e.preventDefault();
+      const open = soonNote.classList.toggle("is-open");
+      soonNote.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!soonNote.classList.contains("is-open")) return;
+      if (soonNote.contains(e.target)) return;
+      soonNote.classList.remove("is-open");
+      soonNote.setAttribute("aria-expanded", "false");
+    });
+
+    soonNote.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      soonNote.classList.remove("is-open");
+      soonNote.setAttribute("aria-expanded", "false");
+      soonNote.blur();
+    });
+  }
+
   /* ---------- Copy email (no mailto) ----------
      Hover tip: "Copy mail" → click → "Copied" */
   const copyBtns = Array.from(document.querySelectorAll(".copy-mail"));
