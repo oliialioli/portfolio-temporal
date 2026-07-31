@@ -694,16 +694,11 @@ button.link-arrow {
     --pad-y: 1.25rem;
     --fs-hero: clamp(2.6rem, 11vw, 4.5rem);
     --fs-title: clamp(1.25rem, 0.95rem + 1.5vw, 1.7rem);
-    --mobile-nav-offset: 7.5rem;
+    --mobile-nav-offset: 6.25rem;
   }
 
   html {
     scroll-padding-top: var(--mobile-nav-offset);
-  }
-
-  .block,
-  #top {
-    scroll-margin-top: var(--mobile-nav-offset);
   }
 
   .layout {
