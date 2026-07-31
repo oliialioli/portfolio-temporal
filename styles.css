@@ -263,7 +263,7 @@ dl, dt, dd {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 0.08em 0.18em;
+  gap: 0.08em 0.14em;
   color: var(--ink-soft);
 }
 
@@ -274,18 +274,20 @@ dl, dt, dd {
   border: 0;
   background: none;
   padding: 0;
-  margin: 0.06em 0 0 0.06em;
+  margin: 0.02em 0 0 0.02em;
   color: var(--soon);
   cursor: help;
   line-height: 1;
   flex: 0 0 auto;
+  align-self: flex-start;
+  transform: translateY(-0.12em);
 }
 .soon-note-mark {
   display: block;
-  width: 0.42em;
+  width: 0.55em;
   height: auto;
-  min-width: 28px;
-  min-height: 26px;
+  min-width: 34px;
+  min-height: 32px;
   transform-origin: 50% 50%;
   animation: soon-spin 8s linear infinite;
 }
