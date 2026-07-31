@@ -297,7 +297,7 @@ dl, dt, dd {
   height: 100%;
   display: block;
   opacity: 0;
-  animation-duration: 2.55s;
+  animation-duration: 1.05s;
   animation-timing-function: steps(1, end);
   animation-iteration-count: infinite;
 }
@@ -329,7 +329,7 @@ dl, dt, dd {
 .soon-note:hover .soon-boil-frame,
 .soon-note:focus-visible .soon-boil-frame,
 .soon-note.is-open .soon-boil-frame {
-  animation-duration: 2s;
+  animation-duration: 0.85s;
 }
 
 @media (prefers-reduced-motion: reduce) {
