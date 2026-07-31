@@ -749,12 +749,12 @@ button.link-arrow {
   .topbar {
     flex-wrap: wrap;
     align-items: flex-start;
+    justify-content: flex-end;
     gap: 0.55rem 1rem;
     padding-bottom: clamp(2rem, 8vw, 3.5rem);
   }
   .topbar-loc {
-    flex-wrap: wrap;
-    max-width: 100%;
+    display: none;
   }
   .topbar-status {
     flex-shrink: 1;
@@ -839,12 +839,6 @@ button.link-arrow {
 
   .sidebar-nav {
     gap: 0.65rem 0.95rem;
-  }
-
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.45rem;
   }
 
   .hero-links {
