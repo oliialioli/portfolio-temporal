@@ -627,8 +627,83 @@ button.link-arrow {
 .contact-list .link-arrow { font-size: inherit; }
 
 /* ============================================================
-   FOOTER
+   WORK MARQUEE (Modio-style strip)
+   Same frame width; height adapts to each image (no crop).
    ============================================================ */
+.work-strip {
+  padding: clamp(2rem, 1.5rem + 3vw, 4rem) 0 clamp(2.5rem, 1.5rem + 4vw, 5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.work-strip__intro {
+  max-width: min(34rem, 100%);
+  margin-bottom: clamp(1.75rem, 1rem + 3vw, 3rem);
+}
+
+.work-strip__lede {
+  margin: 0.85rem 0 0;
+  font-size: var(--fs-title);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.marquee {
+  /* Full-bleed within the content column (like Modio edge crop) */
+  margin-inline: calc(-1 * var(--pad-x));
+  width: calc(100% + 2 * var(--pad-x));
+}
+
+.marquee__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-x 48s linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__set {
+  display: flex;
+  align-items: flex-start; /* top-aligned like Modio */
+  gap: clamp(0.75rem, 0.5rem + 0.8vw, 1.15rem);
+  padding-right: clamp(0.75rem, 0.5rem + 0.8vw, 1.15rem);
+  list-style: none;
+  margin: 0;
+}
+
+.marquee__item {
+  flex: 0 0 auto;
+  overflow: hidden;
+  background: transparent;
+  border-radius: 0;
+  margin-top: 0;
+  /* Same width; height follows each image’s natural ratio (no crop) */
+  width: clamp(230px, 20vw + 2.5rem, 320px);
+  height: auto;
+}
+
+.marquee__item img {
+  width: 100%;
+  height: auto;
+  max-width: none;
+  display: block;
+}
+
+@keyframes marquee-x {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
 /* ============================================================
    FOOTER
    ============================================================ */
@@ -824,6 +899,10 @@ button.link-arrow {
     min-height: 44px;
   }
 
+  .work-strip__lede {
+    max-width: none;
+  }
+
   .focus-list li {
     font-size: clamp(1.1rem, 4.5vw, 1.5rem);
     gap: 0.9rem;
@@ -874,4 +953,17 @@ button.link-arrow {
   html { scroll-behavior: auto; }
   * { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
+
+  .marquee__viewport {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .marquee__track {
+    transform: none;
+    will-change: auto;
+  }
+  .marquee__set[aria-hidden="true"] {
+    display: none;
+  }
 }
