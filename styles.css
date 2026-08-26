@@ -630,27 +630,25 @@ button.link-arrow {
    WORK MARQUEE (Modio-style strip)
    Same frame width; height adapts to each image (no crop).
    ============================================================ */
-.work-strip {
-  padding: clamp(2rem, 1.5rem + 3vw, 4rem) 0 clamp(2.5rem, 1.5rem + 4vw, 5rem);
-  border-top: 1px solid var(--rule);
+.work-block .block-body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 1rem + 2vw, 2.5rem);
 }
 
-.work-strip__intro {
+.work-block .block-title {
+  margin: 0;
   max-width: min(34rem, 100%);
-  margin-bottom: clamp(1.75rem, 1rem + 3vw, 3rem);
 }
 
-.work-strip__lede {
-  margin: 0.85rem 0 0;
-  font-size: var(--fs-title);
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: -0.015em;
-  color: var(--ink);
+.work-block .marquee {
+  /* Break out of block body to content column edges */
+  margin-inline: 0;
+  width: 100%;
 }
 
-.marquee {
-  /* Full-bleed within the content column (like Modio edge crop) */
+/* Full-bleed relative to content padding */
+.content > .work-block .marquee {
   margin-inline: calc(-1 * var(--pad-x));
   width: calc(100% + 2 * var(--pad-x));
 }
@@ -899,7 +897,7 @@ button.link-arrow {
     min-height: 44px;
   }
 
-  .work-strip__lede {
+  .work-block .block-title {
     max-width: none;
   }
 
