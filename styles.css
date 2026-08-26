@@ -663,7 +663,7 @@ button.link-arrow {
 .marquee__track {
   display: flex;
   width: max-content;
-  animation: marquee-x 48s linear infinite;
+  animation: marquee-x 72s linear infinite;
   will-change: transform;
 }
 
