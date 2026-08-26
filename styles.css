@@ -628,12 +628,26 @@ button.link-arrow {
 
 /* ============================================================
    WORK MARQUEE (Modio-style strip)
-   Same frame width; height adapts to each image (no crop).
+   Left-hugging layout on large screens; full-bleed strip.
    ============================================================ */
+.work-block {
+  /* Keep (002) compact so title + strip stay left — not pushed by 1fr */
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    "num label"
+    "num body"
+    "marquee marquee";
+  column-gap: 0.85rem;
+  overflow-x: clip;
+}
+
+.work-block .block-num {
+  width: max-content;
+}
+
 .work-block .block-body {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  display: block;
+  min-width: 0;
 }
 
 .work-block .block-title {
@@ -642,15 +656,13 @@ button.link-arrow {
 }
 
 .work-block .marquee {
-  /* Break out of block body to content column edges */
-  margin-inline: 0;
-  width: 100%;
-}
-
-/* Full-bleed relative to content padding */
-.content > .work-block .marquee {
+  grid-area: marquee;
+  min-width: 0;
+  margin-top: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  /* Full-bleed to content edges (flush left against sidebar border) */
   margin-inline: calc(-1 * var(--pad-x));
   width: calc(100% + 2 * var(--pad-x));
+  max-width: none;
 }
 
 .marquee__viewport {
@@ -758,6 +770,10 @@ button.link-arrow {
     grid-template-columns: minmax(100px, 0.9fr) minmax(0, 3fr);
     gap: 1.25rem;
   }
+  .work-block {
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 0.85rem;
+  }
 }
 
 /* Tablet portrait / large phones landscape */
@@ -856,6 +872,14 @@ button.link-arrow {
     column-gap: 0.75rem;
     row-gap: 0.75rem;
     padding: clamp(1.75rem, 6vw, 2.75rem) 0;
+  }
+  .work-block {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      "num label"
+      "body body"
+      "marquee marquee";
+    column-gap: 0.75rem;
   }
   .block-title {
     max-width: none;
