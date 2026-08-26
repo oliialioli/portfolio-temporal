@@ -1,18 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" role="img" aria-label="oi">
-  <!-- Geometric lowercase "oi" mark; adapts to browser light/dark chrome -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="oi">
+  <!-- Geometric lowercase "oi" as filled paths (no text glyphs, no currentColor). -->
   <style>
-    .mark { color: #111110; }
+    .mark { fill: #111110; }
     @media (prefers-color-scheme: dark) {
-      .mark { color: #ffffff; }
+      .mark { fill: #ffffff; }
     }
   </style>
-  <g class="mark">
-    <!-- o: outline circle; stroke = stem width = dot diameter -->
-    <circle cx="12.875" cy="16" r="7.625" stroke="currentColor" stroke-width="2.75"/>
-    <!-- i stem: monoline bar with soft caps -->
-    <line x1="26.375" y1="13.375" x2="26.375" y2="23.625"
-          stroke="currentColor" stroke-width="2.75" stroke-linecap="round"/>
-    <!-- i dot -->
-    <circle cx="26.375" cy="8.375" r="1.375" fill="currentColor"/>
-  </g>
+  <!-- o: ring (outer r=9, inner r=6.25; stroke width 2.75) -->
+  <path class="mark" fill-rule="evenodd"
+        d="M12.875 7A9 9 0 1 1 12.874 7ZM12.875 9.75a6.25 6.25 0 1 0 .001 0Z"/>
+  <!-- i stem: rounded capsule (matches stroke 2.75 + round caps) -->
+  <path class="mark"
+        d="M25 13.375A1.375 1.375 0 0 0 27.75 13.375V23.625A1.375 1.375 0 0 0 25 23.625Z"/>
+  <!-- i dot -->
+  <circle class="mark" cx="26.375" cy="8.375" r="1.375"/>
 </svg>
