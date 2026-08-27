@@ -212,4 +212,41 @@
   copyBtns.forEach((btn) => {
     btn.addEventListener("click", () => copyEmail(btn));
   });
+
+  /* ---------- Work marquee: preload all frames before animating ---------- */
+  const marqueeTrack = document.querySelector("#work .marquee__track");
+  if (marqueeTrack && !prefersReduced) {
+    const marqueeImgs = Array.from(
+      marqueeTrack.querySelectorAll(".marquee__item img")
+    );
+    const uniqueSrcs = [
+      ...new Set(marqueeImgs.map((img) => img.currentSrc || img.src)),
+    ];
+
+    marqueeImgs.forEach((img) => {
+      const item = img.closest(".marquee__item");
+      const w = Number(img.getAttribute("width"));
+      const h = Number(img.getAttribute("height"));
+      if (item && w > 0 && h > 0) {
+        item.style.aspectRatio = w + " / " + h;
+      }
+    });
+
+    const startMarquee = () => marqueeTrack.classList.add("is-ready");
+
+    const preloadOne = (src) =>
+      new Promise((resolve) => {
+        const loader = new Image();
+        loader.decoding = "async";
+        loader.onload = loader.onerror = resolve;
+        loader.src = src;
+      });
+
+    const preloadAll = Promise.all(uniqueSrcs.map(preloadOne));
+    const timeout = new Promise((resolve) => setTimeout(resolve, 4000));
+
+    Promise.race([preloadAll, timeout]).then(startMarquee);
+  } else if (marqueeTrack) {
+    marqueeTrack.classList.add("is-ready");
+  }
 })();

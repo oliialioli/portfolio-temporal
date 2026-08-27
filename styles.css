@@ -674,12 +674,12 @@ button.link-arrow {
   display: flex;
   width: max-content;
   animation: marquee-x 72s linear infinite;
+  animation-play-state: paused;
   will-change: transform;
 }
 
-.marquee:hover .marquee__track,
-.marquee:focus-within .marquee__track {
-  animation-play-state: paused;
+.marquee__track.is-ready {
+  animation-play-state: running;
 }
 
 .marquee__set {
@@ -707,6 +707,8 @@ button.link-arrow {
   height: auto;
   max-width: none;
   display: block;
+  /* Reserve slot before decode so the strip width stays stable */
+  background: var(--bg);
 }
 
 @keyframes marquee-x {
